@@ -1,0 +1,17 @@
+
+{% load static %}
+<title>See you!</title>
+<!-- All the files that are required -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="{% static "login.css" %}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- LOGIN FORM -->
+<div class="text-center" style="width: 25%; margin:5% auto;padding:50px 0;">
+	<h2>Logged out</h2>
+  	<p>You have been successfully logged out.</p>
+	<div class="logo">Login</div>
+	<a href="{% url 'login' %}">Log in</a> again.</p>
+</div>

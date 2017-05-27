@@ -1,0 +1,168 @@
+html, body, p ,a, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clear {
+  clear: both;
+}
+
+body {
+  background: url('../images/background.png');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Arial';
+}
+
+.site_genisligi {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.sayfa_yapisi {
+  margin-top: 25px;
+  padding-top: 60px;
+}
+
+#menu {
+  position: fixed;
+  z-index:9999;
+  width: 100%;
+  top: 0;
+  background-color: #fff;
+  height: 60px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+.ic_menu li {
+  display: inline-block;
+}
+
+.ic_menu li a {
+  line-height: 58px;
+  display: block;
+  padding: 0 20px;
+  color: #333;
+  font-size: 16px;
+}
+
+.ic_menu li a:hover {
+  border-bottom: 2px solid #000;
+}
+
+/* PAYLAŞIMLAR */
+
+.posts {
+
+}
+
+.post {
+  float: left;
+  width: 230px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 25px;
+  margin-right: 25px;
+}
+
+.post:nth-child(3n-3) {
+  margin-right: 0;
+}
+
+.yazi_alani {
+  width: 100%;
+  max-width: 100%;
+  height: 60px;
+  max-height: 120px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.yazi_butonu {
+  float: right;
+  padding: 10px 25px;
+  background-color: #2ECC71;
+  border: 3px solid rgba(0,0,0,0.1);
+  margin-top: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.uyelik_formu {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.uyelik_formu label {
+  color: #666;
+}
+
+.uyelik_texti {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* PROFİL */
+.profil_bolumu {
+  margin-bottom: 25px;
+}
+
+
+.profil_bolumu img {
+  float: left;
+  width: 128px;
+  height: 128px;
+  border-radius: 100px;
+}
+
+.profil_bilgisi {
+  float: left;
+  margin-left: 20px;
+}
+
+.profil_bolumu h1 {
+
+}
+
+.profil_bolumu p {
+
+}
+
+.karanlik {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  text-align: center;
+
+}
+
+.karanlik img {
+  width: 400px;
+  margin-top: 100px;
+  border-radius: 500px;
+}

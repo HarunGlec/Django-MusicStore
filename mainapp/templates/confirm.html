@@ -1,0 +1,95 @@
+
+<html>
+{% load static %}
+
+
+  <head>
+    <title>Manager | Confirm</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static "styles/style.css" %}">
+    <script src="{% static "scripts/jquery-3.1.1.min.js " %}"></script>
+    <script src="{% static "scripts/script.js" %}"></script>
+
+  </head>
+
+  <body>
+
+
+
+
+	<div id="menu">
+		<ul class="ic_menu site_genisligi">
+		<li>
+			<a href="{% url 'mainapp:index' %}">Home</a>
+		</li> 
+		<li>
+			<a href="{% url 'mainapp:product' %}">Product</a>
+		</li>
+		<li>
+			<a href="{% url 'mainapp:confirm' %}">Confirm</a>
+		</li>
+		<li>
+			<a href="{% url 'mainapp:logout' %}">Logout</a>
+		</li> 
+		</ul>
+	</div>
+
+
+
+
+<div class="site_genisligi sayfa_yapisi">
+    
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Confirm Page</div>
+  <div class="panel-body">
+    <p>Products that you added: </p>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-hover table-striped">
+  	{% if items %} 	
+	<tr>
+		<th>Product Name</th>
+		<th>Price</th> 
+		<th>Quantity</th>
+		<th width="10%"></th>
+	</tr>
+	{% for item in items %}
+	{% if not item.status %} 
+	<tr>
+		<td>{{item.product_id.name }}</td>
+		<td>{{item.boughtPrice}}</td>
+		<td>{{item.quantity}}</td>		
+		<td><a href="" id = "{{ item.id }}" onClick="sendData(this.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true" ></span></a></td>
+	</tr>
+	{% endif %}
+	{% endfor %}
+    {% else %}
+    <div class="well well-lg"><p>No products are available.</p></div>
+    {% endif %}
+  </table>
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+<script>
+    function sendData(item_id){
+    $.ajax({
+                 type:"POST",
+                 url:"{%url 'mainapp:confirm' %}",
+                 data: { item_id: item_id,
+                 		csrfmiddlewaretoken: '{{ csrf_token }}'
+                  },
+                 
+            });
+		return false;
+    }
+
+</script>

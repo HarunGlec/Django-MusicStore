@@ -1,0 +1,95 @@
+
+<html>
+{% load static %}
+
+
+  <head>
+    <title>Online Music Store | Manager</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "styles/style.css" %}">
+    <script src="{% static "scripts/jquery-3.1.1.min.js " %}"></script>
+    <script src="{% static "scripts/script.js" %}"></script>
+
+  </head>
+
+  <body>
+
+
+
+
+    <div id="menu">
+      <ul class="ic_menu site_genisligi">
+        <li>
+          <a href="{% url 'mainapp:index' %}">Home</a>
+        </li> 
+
+        <li>
+          <a href="{% url 'mainapp:product' %}">Product</a>
+        </li> 
+        <li>
+          <a href="{% url 'mainapp:confirm' %}">Confirm</a>
+        </li>
+		
+        <li>
+          <a href="{% url 'mainapp:logout' %}">Logout</a>
+        </li> 
+      </ul>
+    </div>
+
+
+
+
+<div class="site_genisligi sayfa_yapisi">
+    
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title" ><b>. : This is Add Music panel ! : .</b></h1>
+  </div>
+  <div class="panel-body">
+    <p>All Products You Have! </p>
+    <a href="{%url 'mainapp:addProduct' %}" class="btn btn-sm btn-success" style="float:right;"><span class="glyphicon glyphicon-plus"></span> Add</a>
+  </div>
+
+<!-- Table -->
+  <table class="table table-hover table-striped">
+  	{% if items %} 	
+	<tr>
+		<th>Product Name</th>
+		<th>Price</th> 
+		<th>Stock</th>
+		<th width="10%"></th>
+	</tr>
+	{% for item in items %}
+	<tr>
+		<td>{{item.product_id.name}}</td>
+		<td>{{item.product_id.price}}</td>
+		<td>{{item.quantity}}</td>		
+		<td><a href="{% url 'mainapp:updateProduct' item.id %}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-pencil"></span></a><a id = "{{ item.id }}" onClick="sendDataToDelete(this.id)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a></td>
+	</tr>
+	{% endfor %}
+    {% else %}
+    <div class="well well-lg"><p>No products are available.</p></div>
+    {% endif %}
+  </table>
+</div>
+</div>
+
+</body>
+
+</html>
+<script>
+    function sendDataToDelete(item_id){
+    $.ajax({
+                 type:"POST",
+                 url:"{%url 'mainapp:deleteProduct' %}",
+                 data: { item_id: item_id,
+                 		csrfmiddlewaretoken: '{{ csrf_token }}'
+                  },
+                 
+            });
+            location.reload();
+		return false;
+    }
+
+</script>

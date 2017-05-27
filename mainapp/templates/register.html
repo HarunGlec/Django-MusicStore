@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container" >	
+    <div class="col-md-6" >
+        <div id="logbox"  >
+            <form id="signup" method="post" >
+                <h1>Create an Account</h1>
+                {% csrf_token %}
+                <div id="alert_message" class="{%if form.errors%}alert alert-danger{%else%}ghost{%endif%}">
+         			{{form.non_field_errors}} 
+         			{{form.username.errors}}
+         			{{form.email.errors}}
+         			{{form.password1.errors}} 
+         			{{form.password2.errors}}
+         			{{form.manager.errors}}            
+    			</div>
+                {{form.username|add_class:'input pass' }}
+                {{form.email|add_class:'input pass'}}
+                {{form.password1|add_class:'input pass'}}
+                {{form.password2|add_class:'input pass'}}
+                <label style="padding-left:35%;" for="{{ form.manager.id_for_label }}">Manager :</label>
+                {{form.manager}}
+                
+				 <input type="submit" value="Register!" class="inputButton"/>
+
+            </form>
+        </div>
+    </div>
+    <!--col-md-6-->
+
+
+</div>
+{% endblock %}
+{% block script %}
+<script>
+window.setTimeout(function() {
+  $("#alert_message").fadeTo(500, 0).slideUp(500, function(){
+    $(this).remove(); 
+  });
+}, 3000);
+</script>
+{% endblock %}
